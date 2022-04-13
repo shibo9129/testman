@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#003366">
+    <link href="./css/index.css" rel="stylesheet" type="text/css" />
+    <script src='./js/axios.min.js'></script>
+    <script src="./js/vue.js"></script>
+    <script src="./js/index.js"></script>
+    <link rel="icon" href="./img/favicon.ico" mce_href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./img/favicon.ico" mce_href="/favicon.ico" type="image/x-icon">
+    <title>Testman</title>
+</head>
+    <body>
+
+        <div id="header" class="header">
+            <el-menu
+            :default-active="activeIndex2"
+            class="el-menu-demo"
+            mode="horizontal"
+            @select="handleSelect"
+            background-color="#003366"
+            text-color="#FFFFFF">
+            <el-menu-item index="1"><a class="menu" href="./index.html">首页</a></el-menu-item>
+            <el-submenu index="2">
+                <template slot="title">测试工具</template>
+                <el-menu-item index="2-2"><a class="menu" href="http://www.baidu.com" target="_blank">sss</a></el-menu-item>
+                <el-submenu index="2-1">
+                    <template slot="title">场景构建工具</template>
+                    <el-menu-item index="2-1-1"><a class="menu" href="content/testsce_api.html">testsce_api</a></el-menu-item>
+                    <el-menu-item index="2-1-2"><a class="menu" href="http://www.baidu.com">testsce_ui</a></el-menu-item>
+                </el-submenu>
+                <el-menu-item index="2-2"><a class="menu" href="content/public.html">测试公共模块库</a></el-menu-item>
+                <el-menu-item index="2-3"><a class="menu" href="http://www.baidu.com" target="_blank">MeterSphere</a></el-menu-item>
+                <el-menu-item index="2-4"><a class="menu" href="http://www.baidu.com" target="_blank">baidu</a></el-menu-item>
+            </el-submenu>
+            
+            <el-submenu index="3">
+                <template slot="title">质效数据平台</template>
+                <el-menu-item index="3-1"><a class="menu" href="http://www.baidu.com" target="_blank">工作效能总览</a></el-menu-item>
+                <el-menu-item index="3-2"><a class="menu" href="http://www.baidu.com" target="_blank">质量分析</a></el-menu-item>
+                <el-menu-item index="3-3"><a class="menu" href="http://www.baidu.com" target="_blank">接口测试统计</a></el-menu-item>
+            </el-submenu>
+
+            <el-submenu index="4">
+                <template slot="title">研发效能工具</template>
+                <el-menu-item index="4-1"><a class="menu" href="www.baidu.com" target="_blank">fff</a></el-menu-item>
+                <el-menu-item index="4-2"><a class="menu" href="www.baidu.com" target="_blank">Gitlab</a></el-menu-item>
+                <el-menu-item index="4-3"><a class="menu" href="www.baidu.com" target="_blank">Jira</a></el-menu-item>
+            </el-submenu>
+    
+            <el-submenu index="5">
+                <template slot="title">运维工具</template>
+                <el-submenu index="5-1">
+                    <template slot="title">微服务中心</template>
+                    <el-menu-item index="5-1-1"><a class="menu" href="www.baidu.com" target="_blank">UIT</a></el-menu-item>
+                    <el-menu-item index="5-1-2"><a class="menu" href="www.baidu.com" target="_blank">SIT</a></el-menu-item>
+                    <el-menu-item index="5-1-3"><a class="menu" href="www.baidu.com" target="_blank">UAT</a></el-menu-item>
+                    <el-menu-item index="5-1-4"><a class="menu" href="www.baidu.com" target="_blank">PET</a></el-menu-item>
+                    <el-menu-item index="5-1-5"><a class="menu" href="www.baidu.com" target="_blank">DEV</a></el-menu-item>
+                </el-submenu>
+                <el-menu-item index="5-2"><a class="menu" href="www.baidu.com" target="_blank">eee</a></el-menu-item>
+                <el-menu-item index="5-3"><a class="menu" href="www.baidu.com" target="_blank">ttt</a></el-menu-item>
+                <el-menu-item index="5-4"><a class="menu" href="www.baidu.com" target="_blank">Jenkins</a></el-menu-item>
+            </el-submenu>
+    
+            <el-submenu index="6">
+                <template slot="title">Wiki</template>
+                <el-menu-item index="6-1"><a class="menu" href="https://devops.web.guosen.com.cn/confluence/login.action" target="_blank">Confluence</a></el-menu-item>
+                <el-menu-item index="6-2"><a class="menu" href="http://172.24.155.75/static/online/run/index.html" target="_blank">业务系统接口文档</a></el-menu-item>
+                <el-menu-item index="6-3"><a class="menu" href="http://zebra.guosen.com.cn/" target="_blank">微服务框架</a></el-menu-item>
+            </el-submenu>
+    
+            <el-submenu index="7">
+                <template slot="title">W应用</template>
+                <el-submenu index="6-1">
+                    <template slot="title">ttt</template>
+                    <el-menu-item index="7-1-1"><a class="menu" href="www.baidu.com" target="_blank">准生产</a></el-menu-item>
+                    <el-menu-item index="7-1-2"><a class="menu" href="www.baidu.com" target="_blank">测试</a></el-menu-item>
+                    <el-menu-item index="7-1-3"><a class="menu" href="www.baidu.com" target="_blank">备用测试</a></el-menu-item>
+                </el-submenu>
+                <el-submenu index="7-2">
+                    <template slot="title">管理后台</template>
+                    <el-menu-item index="7-2-1"><a class="menu" href="www.baidu.com" target="_blank">测试管理后台</a></el-menu-item>
+                    <el-menu-item index="7-2-2"><a class="menu" href="www.baidu.com" target="_blank">开发管理后台</a></el-menu-item>
+                </el-submenu>
+                <el-menu-item index="7-3"><a class="menu" href="www.baidu.com" target="_blank">ttt</a></el-menu-item>
+                <el-menu-item index="7-4"><a class="menu" href="www.baidu.com" target="_blank">采编平台</a></el-menu-item>
+                <el-menu-item index="7-5"><a class="menu" href="www.baidu.com" target="_blank">直播后台</a></el-menu-item>
+            </el-submenu>
+        </el-menu>
+        </div>
+        
+        <div class="content_title" id="home">
+            <br>
+            <h1>Testman</h1>
+            
+            <br>
+            <div class="marquee">
+                <marquee class="exp" onmouseout="this.start()" onmouseover="this.stop()">
+                    <em class="exp">
+                        微信公众号：Testman测试人（imtestman）
+                    </em>
+                    <img src="./img/marquee.png" class="exp">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <em class="exp">
+                        <a href="www.baidu.com" target="_blank" style="color:#99CCFF">^^^请详细参阅测试交付规范</a>
+                    </em>
+                    <img src="./img/marquee.png" class="exp">
+                    
+                </marquee>
+            </div>
+            
+            <br>
+            <br>
+            
+            <!-- <img class="home" src="img/homebackground.jpg">
+            <div class="img">
+                <span class="home">
+                    Testman lives near a calm lake,
+
+                        where there're no Bugs or fishermen, 
+                    
+                            only birds and fish.
+                        
+                                            ----Stan Shek
+
+
+                                    
+   
+                </span> -->
+
+                <el-row>
+                    <el-col :span="6">
+                        <div id="iframe_bug_yesterday" class="iframe">
+                        </div>
+                    </el-col>
+                    <el-col :span="6">
+                        <div id="iframe_api_case_cov_yesterday" class="iframe">
+                        </div>
+                    </el-col>
+                    <el-col :span="6">
+                        <div id="iframe_api_case_run" class="iframe">
+                        </div>
+                    </el-col>
+                    <el-col :span="6">
+                        <div id="iframe_wait" class="iframe">
+                        </div>
+                    </el-col>
+                </el-row>
+                <br>
+                <br>
+                <el-row>
+                    <el-col :span="24">
+                        <div id="iframe_bug" class="iframe">
+                        </div>
+                    </el-col>
+                </el-row>
+                <br>
+                <br>
+                <el-row>
+                    <el-col :span="24">
+                        <div id="iframe_qfactor" class="iframe">
+                        </div>
+                    </el-col>
+                </el-row>
+                <br>
+                <br>
+                <br>
+                <br>
+                <el-row>
+                    <el-col :span="24">
+                        <div id="iframe_api_case_cov" class="iframe">
+                        </div>
+                    </el-col>
+                </el-row>
+                <!-- <el-row>
+                    <el-col :span="12">
+                        <div id="iframe_bug_demand" class="iframe">
+                        </div>
+                    </el-col>
+                    <el-col :span="12">
+                        <div id="iframe_bug_demandmodule" class="iframe">
+                        </div>
+                    </el-col>
+                </el-row>
+                <br>
+                <br> -->
+                
+            
+                <!-- 署名及版本 -->
+                <br>
+                <hr>
+                <code class="sign" style="width: 300px;text-align: center;"><a href="./content/report.html">微信公众号：Testman测试人（imtestman）</a></code>
+                <br>
+                <br>
+                <input type='image' src="img/help2.PNG" v-on:click="help" width="50" height="45" align="right" title="提示"/> 
+            </div>
+            
+                
+        </div>
+         
+        
+        <script>
+            var Main = {
+                data() {
+                return {
+                    activeIndex: '1',
+                    activeIndex2: '1'
+                };
+                },
+                methods: {
+                handleSelect(key, keyPath) {
+                    console.log(key, keyPath);
+                }
+                }
+            }
+            var Ctor = Vue.extend(Main)
+            new Ctor().$mount('#header')
+        </script>
+        <script>
+            var home = new Vue({
+                el: '#home',
+                data(){
+                    return {
+                        begdate_iframe: 'now/d-31d',
+                        enddate_iframe: 'now/d',
+                    }
+                },
+                methods:{
+                    help() {
+                        this.$alert('微信公众号：Testman测试人（imtestman）', {
+                        confirmButtonText: '确定',
+                        callback: action => {
+                        }
+                        });
+                    },
+
+                    get_iframe() {
+                        document.getElementById('iframe_bug_yesterday').innerHTML = "<iframe class='report_tiny' src='http://111.111.111.111:3000/d-solo/-CBO5TK7z/jellyfish?orgId=1&from="+this.begdate_iframe+"&to="+this.enddate_iframe+"&theme=light&panelId=17'></iframe>";
+
+                        document.getElementById('iframe_api_case_cov_yesterday').innerHTML = "<iframe class='report_tiny' src='http://111.111.111.111:3000/d-solo/-CBO5TK7z/jellyfish?orgId=1&from="+this.begdate_iframe+"&to="+this.enddate_iframe+"&theme=light&panelId=50'></iframe>";
+
+                        document.getElementById('iframe_wait').innerHTML = "<iframe class='report_tiny' src='http://111.111.111.111:3000/d-solo/-CBO5TK7z/jellyfish?orgId=1&from="+this.begdate_iframe+"&to="+this.enddate_iframe+"&theme=light&panelId=51'></iframe>";
+
+                        document.getElementById('iframe_api_case_run').innerHTML = "<iframe class='report_tiny' src='http://111.111.111.111:3000/d-solo/-CBO5TK7z/jellyfish?orgId=1&from="+this.begdate_iframe+"&to="+this.enddate_iframe+"&theme=light&panelId=52'></iframe>";
+
+                        document.getElementById('iframe_bug').innerHTML = "<iframe class='report_large' src='http://111.111.111.111:3000/d-solo/-CBO5TK7z/jellyfish?orgId=1&from="+this.begdate_iframe+"&to="+this.enddate_iframe+"&theme=light&panelId=23'></iframe>";
+
+                        // document.getElementById('iframe_bug_demand').innerHTML = "<iframe class='report_middle' src='http://111.111.111.111:3000/d-solo/-CBO5TK7z/jellyfish?orgId=1&from="+this.begdate_iframe+"&to="+this.enddate_iframe+"&theme=light&panelId=35'></iframe>";
+
+                        // document.getElementById('iframe_bug_demandmodule').innerHTML = "<iframe class='report_middle' src='http://111.111.111.111:3000/d-solo/-CBO5TK7z/jellyfish?orgId=1&from="+this.begdate_iframe+"&to="+this.enddate_iframe+"&theme=light&panelId=53'></iframe>";
+
+                        document.getElementById('iframe_qfactor').innerHTML = "<iframe class='report_large' src='http://111.111.111.111:3000/d-solo/-CBO5TK7z/jellyfish?orgId=1&from="+this.begdate_iframe+"&to="+this.enddate_iframe+"&theme=light&panelId=55'></iframe>";
+
+                        document.getElementById('iframe_api_case_cov').innerHTML = "<iframe class='report_large' src='http://111.111.111.111:3000/d-solo/-CBO5TK7z/jellyfish?orgId=1&from="+this.begdate_iframe+"&to="+this.enddate_iframe+"&theme=light&panelId=56'></iframe>";
+                    }
+                },
+                mounted() {
+                this.get_iframe()
+                this.get_namelist()
+
+                },
+            })
+        </script>
+    </body>
+</html>

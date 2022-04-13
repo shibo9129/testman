@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#003366">
+    <link href="../css/index.css" rel="stylesheet" type="text/css" />
+    <script src='../js/axios.min.js'></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/index.js"></script>
+    <link rel="icon" href="../img/favicon.ico" mce_href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../img/favicon.ico" mce_href="/favicon.ico" type="image/x-icon">
+    <title>接口测试场景构建工具testsce_api</title>
+</head>
+<body>
+    
+    <div id="header" class="header">
+        <el-menu
+        :default-active="activeIndex2"
+        class="el-menu-demo"
+        mode="horizontal"
+        @select="handleSelect"
+        background-color="#003366"
+        text-color="#FFFFFF">
+        <el-menu-item index="1"><a class="menu" href="../index.html">首页</a></el-menu-item>
+        <el-submenu index="2">
+            <template slot="title">测试工具</template>
+            <el-menu-item index="2-2"><a class="menu" href="http://www.baidu.com/" target="_blank">yyy</a></el-menu-item>
+            <el-submenu index="2-1">
+                <template slot="title">场景构建工具</template>
+                <el-menu-item index="2-1-1"><a class="menu" href="./testsce_api.html">testsce_api</a></el-menu-item>
+                <el-menu-item index="2-1-2"><a class="menu" href="./testsce_ui.html">testsce_ui</a></el-menu-item>
+            </el-submenu>
+            <el-menu-item index="2-2"><a class="menu" href="./public.html">测试公共模块库</a></el-menu-item>
+            <el-menu-item index="2-3"><a class="menu" href="http://www.baidu.com:3001" target="_blank">MeterSphere</a></el-menu-item>
+            <el-menu-item index="2-4"><a class="menu" href="http://www.baidu.com:3001" target="_blank">sss</a></el-menu-item>
+        </el-submenu>
+
+        <el-submenu index="3">
+            <template slot="title">质效数据平台</template>
+            <el-menu-item index="3-1"><a class="menu" href="http://www.baidu.com" target="_blank">工作效能总览</a></el-menu-item>
+            <el-menu-item index="3-2"><a class="menu" href="http://www.baidu.com" target="_blank">质量分析</a></el-menu-item>
+            <el-menu-item index="3-3"><a class="menu" href="http://www.baidu.com" target="_blank">接口测试统计</a></el-menu-item>
+        </el-submenu>
+
+        <el-submenu index="4">
+            <template slot="title">研发效能工具</template>
+            <el-menu-item index="4-1"><a class="menu" href="http://www.baidu.com" target="_blank">fff</a></el-menu-item>
+            <el-menu-item index="4-2"><a class="menu" href="http://www.baidu.com" target="_blank">Gitlab</a></el-menu-item>
+            <el-menu-item index="4-3"><a class="menu" href="https://www.baidu.com" target="_blank">Jira</a></el-menu-item>
+        </el-submenu>
+
+        <el-submenu index="5">
+            <template slot="title">运维工具</template>
+            <el-submenu index="5-1">
+                <template slot="title">微服务中心</template>
+                <el-menu-item index="5-1-1"><a class="menu" href="http://www.baidu.com" target="_blank">UIT </a></el-menu-item>
+                <el-menu-item index="5-1-2"><a class="menu" href="http://www.baidu.com" target="_blank">SIT </a></el-menu-item>
+                <el-menu-item index="5-1-3"><a class="menu" href="http://www.baidu.com" target="_blank">UAT </a></el-menu-item>
+                <el-menu-item index="5-1-4"><a class="menu" href="http://www.baidu.com" target="_blank">PET </a></el-menu-item>
+                <el-menu-item index="5-1-5"><a class="menu" href="http://www.baidu.com" target="_blank">DEV </a></el-menu-item>
+            </el-submenu>
+            <el-menu-item index="5-2"><a class="menu" href="http://www.baidu.com" target="_blank">ddd</a></el-menu-item>
+            <el-menu-item index="5-3"><a class="menu" href="http://www.baidu.com" target="_blank">ttt</a></el-menu-item>
+            <el-menu-item index="5-4"><a class="menu" href="http://www.baidu.com" target="_blank">Jenkins</a></el-menu-item>
+        </el-submenu>
+
+        <el-submenu index="6">
+            <template slot="title">Wiki</template>
+            <el-menu-item index="6-1"><a class="menu" href="https://www.baidu.com" target="_blank">Confluence</a></el-menu-item>
+            <el-menu-item index="6-2"><a class="menu" href="http://www.baidu.com" target="_blank">业务系统接口文档</a></el-menu-item>
+            <el-menu-item index="6-3"><a class="menu" href="http://www.baidu.com" target="_blank">微服务框架</a></el-menu-item>
+        </el-submenu>
+
+        <el-submenu index="7">
+            <template slot="title">Web应用</template>
+            <el-submenu index="7-1">
+                <template slot="title">ttt</template>
+                <el-menu-item index="7-1-1"><a class="menu" href="http://www.baidu.com" target="_blank">准生产</a></el-menu-item>
+                <el-menu-item index="7-1-2"><a class="menu" href="http://www.baidu.com" target="_blank">测试</a></el-menu-item>
+                <el-menu-item index="7-1-3"><a class="menu" href="http://www.baidu.com" target="_blank">备用测试</a></el-menu-item>
+            </el-submenu>
+            <el-submenu index="7-2">
+                <template slot="title">管理后台</template>
+                <el-menu-item index="7-2-1"><a class="menu" href="http://www.baidu.com" target="_blank">测试管理后台</a></el-menu-item>
+                <el-menu-item index="7-2-2"><a class="menu" href="http://www.baidu.com" target="_blank">开发管理后台</a></el-menu-item>
+            </el-submenu>
+            <el-menu-item index="7-3"><a class="menu" href="https://www.baidu.com" target="_blank">ttt</a></el-menu-item>
+            <el-menu-item index="7-4"><a class="menu" href="https://www.baidu.com" target="_blank">采编平台</a></el-menu-item>
+            <el-menu-item index="7-5"><a class="menu" href="http://www.baidu.com" target="_blank">直播后台</a></el-menu-item>
+        </el-submenu>
+    </el-menu>
+    </div>
+    
+
+    <div id="testsce_api">
+        <div class="content" style="top: 70px;">
+        <br>
+        <div class="marquee">
+            <marquee class="exp" onmouseout="this.start()" onmouseover="this.stop()">
+                <em class="exp">
+                    微信公众号：Testman测试人（imtestman）
+                </em>
+                <img src="../img/marquee.png" class="exp">
+            </marquee>
+        </div>
+        <br>
+        <h1>接口测试场景构建工具testsce_api</h1>
+        <el-link :href="`${git_url_debug}`" target="_blank">下载debug包</el-link>
+        <el-button @click="sync" title="点击并等待返回成功提示语后，再执行场景构建！">点击同步仓库脚本</el-button>{{resultx}}
+        <br>
+            <br>
+            <!-- 选择环境控件，选中后调用api_showpy_run取pynames列表 -->
+            <h2>选择环境</h2>
+            <el-radio @change="api_showpy_run" label="sit" v-model="env">sit</el-radio>
+            <el-radio @change="api_showpy_run" label="uat" v-model="env">uat</el-radio>
+            <el-radio @change="api_showpy_run" label="dev" v-model="env">dev</el-radio>
+            <el-radio @change="api_showpy_run" label="pet" v-model="env">pet</el-radio>
+            
+            <br>
+            <br>
+
+            <h2>选择脚本</h2>
+            <!-- 下拉框取pynames -->
+            <el-select v-model="selected" filterable aria-placeholder="请选择">
+                <el-option 
+                v-for="item in pynames"
+                :label=item
+                :value=item>
+                </option>
+            </el-select>
+
+            <br>
+            <br>
+            <!-- 执行选中的python脚本，调用api_sce_run -->
+            <el-button type="primary" @click="api_sce_run">执行</el-button>
+            <br>
+            <br>
+            执行结果：
+            <pre>{{result}}</pre>
+            
+            <!-- 署名及版本 -->
+            <br>
+            <hr>
+            <code class="sign" style="width: 300;text-align: center;"><a href="./report.html">微信公众号：Testman测试人（imtestman）</a></code>
+            <br>
+            <br>
+            <input type='image' src="../img/help2.PNG" v-on:click="help" width="50" height="45" align="right" title="提示"/>        
+            
+        </div>
+    </div>
+
+    <script>
+        var Main = {
+            data() {
+            return {
+                activeIndex: '1',
+                activeIndex2: '1'
+            };
+            },
+            methods: {
+            handleSelect(key, keyPath) {
+                console.log(key, keyPath);
+            }
+            }
+        }
+        var Ctor = Vue.extend(Main)
+        new Ctor().$mount('#header')
+    </script>
+
+    <script>
+        var testsce_api = new Vue({
+            el: '#testsce_api',
+            data: {
+                url: 'http://www.baidu.com',
+                git_url_debug: 'http://www.baidu.com',
+                env: '',
+                selected: '',
+                pynames: '',
+                result: '',
+                resultx: ''
+            },
+            methods:{
+                // api_sce_run用于执行选中的脚本
+                api_sce_run(){
+                    if (this.env == '') {
+                        this.$message({message:'请选择测试环境！',type:'warning'})
+                        // alert('请选择测试环境！')
+                        pass
+                    }
+                    if (this.selected == '') {
+                        this.$message({message:'请选择脚本！',type:'warning'})
+                        // alert('请选择脚本！')
+                        pass
+                    }
+                    this.$message({message:'提交成功，请耐心等待!',type:'success'});
+                    axios
+                        .get(this.url+'/api_sce?'+'env='+this.env+'&pyname='+this.selected)
+                        .then(response => (this.result = response.data))
+                },
+                // api_showpy_run用于查询当前环境路径下可执行的所有脚本文件，输出列表
+                api_showpy_run(){
+                    this.selected = ''
+                    this.result = ''
+                    axios
+                        .get(this.url+'/api_showpy?'+'env='+this.env)
+                        .then(response => (this.pynames = response.data))
+                },
+                // sync用于通过调用test_sync脚本执行远端操作及拉取git最新脚本到本地，实现脚本同步
+                sync(){
+                    this.$message({message:'提交成功，请耐心等待!',type:'success'});
+                    axios
+                        .get(this.url+'/runpy_params?pyname=test_sync&repo_name=')
+                        .then(response => (this.resultx = response.data.message))
+                },
+                
+                help() {
+                    this.$alert('微信公众号：Testman测试人（imtestman）', {
+                    confirmButtonText: '确定',
+                    callback: action => {
+                    }
+                    });
+                },
+            },
+            mounted() {
+                axios
+                    .get(this.url+'/api_showpy?'+'env=sit')
+                    .then(response => (this.pynames = response.data))
+            }
+           
+        })
+    </script>
+    
+</body>
+</html>

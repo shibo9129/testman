@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="theme-color" content="rgb(16,98,127)">
+        <link href="../../css/md.css" rel="stylesheet" type="text/css" />
+        <link href="../../css/button.css" rel="stylesheet" type="text/css" />
+        <link href="../../css/element-ui.css" rel="stylesheet" type="text/css" />
+        <script src='../../js/vue.js'></script>
+        <script src='../../js/vue3.js'></script>
+        <script src='../../js/axios.min.js'></script>
+        <script src='../../js/element-ui.js'></script>
+        <div id="app">
+    </head>
+
+    <body>
+        <div class="line"></div>
+        <div class="header">
+
+            <el-menu
+                :default-active="activeIndex2"
+                class="el-menu-demo"
+                mode="horizontal"
+                @select="handleSelect"
+                background-color="rgb(51,56,66)"
+                text-color="rgb(170, 243, 249)">
+                <!-- <el-menu-item index="1">处理中心</el-menu-item> -->
+                <el-submenu index="1">
+                    <template slot="title">测试工具</template>
+                    <el-menu-item index="1-2"><a class="menu" href="http://gxsteam.crcloud.com/" target="_blank">Horus</a></el-menu-item>
+                    <el-submenu index="1-1">
+                        <template slot="title">场景构建工具</template>
+                        <el-menu-item index="1-1-1"><a class="menu" href="../testsce_api.html" target="_blank">testsce_api</a></el-menu-item>
+                        <el-menu-item index="1-1-2"><a class="menu" href="../testsce_ui.html" target="_blank">testsce_ui</a></el-menu-item>
+                    </el-submenu>
+                    <el-menu-item index="2-2"><a class="menu" href="../public.html" target="_blank">测试公共模块库</a></el-menu-item>
+                </el-submenu>
+
+                <el-submenu index="2">
+                    <template slot="title">研发效能工具</template>
+                    <el-menu-item index="2-1"><a class="menu" href="http://devops.guosen.com.cn" target="_blank">Simba</a></el-menu-item>
+                    <el-menu-item index="2-2"><a class="menu" href="http://devops.guosen.com.cn/gitlab" target="_blank">Gitlab</a></el-menu-item>
+                    <el-menu-item index="2-3"><a class="menu" href="http://devops.guosen.com.cn/jira" target="_blank">Jira</a></el-menu-item>
+                </el-submenu>
+
+                <el-submenu index="3">
+                    <template slot="title">运维工具</template>
+                    <el-submenu index="3-1">
+                        <template slot="title">微服务中心</template>
+                        <el-menu-item index="3-1-1"><a class="menu" href="http://172.24.150.116" target="_blank">UIT Zebra</a></el-menu-item>
+                        <el-menu-item index="3-1-2"><a class="menu" href="http://172.24.149.239" target="_blank">SIT Zebra</a></el-menu-item>
+                        <el-menu-item index="3-1-3"><a class="menu" href="http://172.24.149.36" target="_blank">UAT Zebra</a></el-menu-item>
+                        <el-menu-item index="3-1-4"><a class="menu" href="http://172.24.149.218" target="_blank">PET Zebra</a></el-menu-item>
+                        <el-menu-item index="3-1-5"><a class="menu" href="http://172.24.140.232" target="_blank">DEV Zebra</a></el-menu-item>
+                    </el-submenu>
+                    <el-menu-item index="3-2"><a class="menu" href="http://devyun.guosen.com.cn" target="_blank">Devyun</a></el-menu-item>
+                    <el-menu-item index="3-3"><a class="menu" href="http://172.24.148.33/login" target="_blank">EasyOps</a></el-menu-item>
+                    <el-menu-item index="3-4"><a class="menu" href="http://devops.guosen.com.cn/jenkins" target="_blank">Jenkins</a></el-menu-item>
+                </el-submenu>
+
+                <el-submenu index="4">
+                    <template slot="title">Wiki</template>
+                    <el-menu-item index="4-1"><a class="menu" href="http://devops.guosen.com.cn/confluence" target="_blank">Confluence</a></el-menu-item>
+                    <el-menu-item index="4-2"><a class="menu" href="http://172.24.155.75/static/online/run/index.html" target="_blank">业务系统接口文档</a></el-menu-item>
+                    <el-menu-item index="4-3"><a class="menu" href="http://zebra.guosen.com.cn/" target="_blank">微服务框架</a></el-menu-item>
+                </el-submenu>
+
+                <el-submenu index="5">
+                    <template slot="title">Web应用</template>
+                    <el-submenu index="5-1">
+                        <template slot="title">网厅</template>
+                        <el-menu-item index="5-1-1"><a class="menu" href="http://pre-trade.guosen.com.cn/gxwt/pc/login" target="_blank">准生产网厅</a></el-menu-item>
+                        <el-menu-item index="5-1-2"><a class="menu" href="http://172.24.141.161/gxwt/pc/index" target="_blank">测试网厅</a></el-menu-item>
+                        <el-menu-item index="5-1-3"><a class="menu" href="http://172.24.141.115/gxwt/pc/index" target="_blank">备用测试网厅</a></el-menu-item>
+                    </el-submenu>
+                    <el-submenu index="5-2">
+                        <template slot="title">管理后台</template>
+                        <el-menu-item index="5-2-1"><a class="menu" href="http://172.24.148.23:8080/gsmp/" target="_blank">测试管理后台</a></el-menu-item>
+                        <el-menu-item index="5-2-2"><a class="menu" href="http://172.24.181.23:8080/gsmp/" target="_blank">开发管理后台</a></el-menu-item>
+                    </el-submenu>
+                </el-submenu>
+            </el-menu>
+
+            <br>
+            <br>
+            <br>
+            <h1 class="header">
+                <a href="../../index.html" target="_blank"><img src="../../img/pacman.PNG" width="110" height="50" /></a>
+                Testman
+            </h1>
+        </div>
+
+
+    </body>
+    
+    <script>
+        var Main = {
+            data() {
+            return {
+                activeIndex: '1',
+                activeIndex2: '1'
+            };
+            },
+            methods: {
+            handleSelect(key, keyPath) {
+                console.log(key, keyPath);
+            }
+            }
+        }
+        var Ctor = Vue.extend(Main)
+        new Ctor().$mount('#app')
+    </script>
+
+    
+</html>
